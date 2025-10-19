@@ -5,8 +5,9 @@
 // events
 #include "../modules/events/include/on_ready.h"
 // slash commands
-#include "../modules/commands/include/on_interaction.h"
+#include "../modules/commands/include/commands.h"
 
+#define GUILD_ID 1428118894240862241 // discord.gg/q3JPQE8NGD <3
 #define CONFIG_FILE "config.json"
 
 int main(void) {
@@ -17,7 +18,7 @@ int main(void) {
   }
 
   discord_set_on_ready(client, &on_ready);
-	discord_set_on_interaction_create(client, &on_interaction);
+  discord_set_on_interaction_create(client, &on_interaction);
   discord_run(client);
 
   return 0;

@@ -5,9 +5,7 @@ INCLUDE_DIR = \
 
 MODULES_SRC = \
 			../modules/events/src/on_ready.c \
-			../modules/commands/src/ping.c \
-			../modules/commands/src/kick.c \
-			../modules/commands/src/on_interaction.c
+			../modules/commands/src/ping.c
 
 SRC = \
 			main.c
