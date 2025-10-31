@@ -4,5 +4,6 @@ __pycache__/
 # files
 humari.zip
 config.json
+__init__.py
 discloud.config
 requirements.txt
