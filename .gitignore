@@ -1,0 +1,8 @@
+# folders
+__pycache__/
+
+# files
+humari.zip
+config.json
+discloud.config
+requirements.txt
