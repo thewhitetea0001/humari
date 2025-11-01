@@ -13,8 +13,11 @@ client = commands.InteractionBot(
     intents=intents
 )
 
-# Cogs
+# Cogs / events
 client.load_extension("modules.events.on_ready")
 client.load_extension("modules.events.on_member_join")
+
+# Cogs / slash commands
+client.load_extension("modules.slash_commands.botinfo")
 
 client.run(Token.getToken("src/config.json"))
