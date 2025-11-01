@@ -1,7 +1,10 @@
+import warnings
 import disnake
 import sys, os
 from disnake.ext import commands
 from utilities.bot import Token
+
+warnings.filterwarnings("ignore")
 
 # Intents
 intents = disnake.Intents.default()
@@ -19,5 +22,6 @@ client.load_extension("modules.events.on_member_join")
 
 # Cogs / slash commands
 client.load_extension("modules.slash_commands.botinfo")
+client.load_extension("modules.slash_commands.patpat")
 
 client.run(Token.getToken("src/config.json"))
