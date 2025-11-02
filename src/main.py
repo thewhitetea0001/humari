@@ -23,5 +23,6 @@ client.load_extension("modules.events.on_member_join")
 # Cogs / slash commands
 client.load_extension("modules.slash_commands.botinfo")
 client.load_extension("modules.slash_commands.patpat")
+client.load_extension("modules.slash_commands.economy.work")
 
 client.run(Token.getToken("src/config.json"))

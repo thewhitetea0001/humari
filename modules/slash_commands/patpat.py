@@ -39,7 +39,7 @@ class PatPat(commands.Cog):
             Log.info(f"User {inter.author} petted {user}")
         except Exception as e:
             await inter.response.send_message(f"Ошибка при выполнении команды:\n```sh\n{e}\n```", ephemeral=True)
-            Log.error(f"({inter.author.name}) patpat failed", e)
+            Log.error(f"({inter.author.name}) patpat", e)
 
     @commands.Cog.listener()
     async def on_slash_command_error(self, inter: disnake.ApplicationCommandInteraction, error):
@@ -48,7 +48,7 @@ class PatPat(commands.Cog):
             Log.warn(f"({inter.author.name}) patpat {user}: Could not found user with ID '{user}'")
             await inter.response.send_message(f"Не удалось найти пользователя с ID `{user}`", ephemeral=True)
         else:
-            raise error
+            Log.error(f"({inter.author}) patpat {user}", error)
 
 def setup(client):
     client.add_cog(PatPat(client))

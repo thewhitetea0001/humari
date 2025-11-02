@@ -22,7 +22,7 @@ class OnMemberJoin(commands.Cog):
         embed.set_thumbnail(url=embed_thumbnail_url)
 
         await channel.send(embed=embed)
-        Log.info("The greating embed for membed '{member.name}' was sended to the channel 'channel.id'")
+        Log.info(f"The greating embed for membed '{member.name}' was sended to the channel '{channel.id}'")
 
 def setup(client):
 	client.add_cog(OnMemberJoin(client))
