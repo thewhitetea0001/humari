@@ -1,8 +1,9 @@
 import disnake
+import psutil, os
 import sys
 from disnake.ext import commands
 from utilities.log import Log
-from utilities.bot import Icons
+from utilities.bot import Icons, UpTime
 
 class BotInfo(commands.Cog):
     def __init__(self, client):
@@ -13,13 +14,20 @@ class BotInfo(commands.Cog):
         self, 
         inter: disnake.ApplicationCommandInteraction
     ):
-        Log.info("scmd", "botinfo", f"User {inter.author.name} used the command")
+        python_version = f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"
+
+        process = psutil.Process(os.getpid())
+        ram_used = f"{process.memory_info().rss / 1024 ** 2:.2f}"
+
+        Log.info("scmd", "botinfo", f"({inter.author.name}) User used the command")
 
         embed = disnake.Embed(
             title=f"{Icons.Server.white_frog} | Информация о боте",
             description=(
-                f"{Icons.Dev.python_logo} Python: `{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}`\n"
-                f"{Icons.Dev.python_logo} Disnake: `{disnake.__version__}`"
+                f"{Icons.Dev.python_logo} Python: `{python_version}`\n"
+                f"{Icons.Dev.disnake_logo} Disnake: `{disnake.__version__}`\n\n"
+                f"{Icons.Dev.boat_green} Аптайм: {UpTime.getUpTime()}\n"
+                f"{Icons.Dev.boat_green} RAM использовано: `{ram_used}` MB"
             ),
             color=0xcccccc
         )

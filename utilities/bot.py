@@ -1,4 +1,5 @@
 import json
+import time
 
 class Token:
     @staticmethod
@@ -7,7 +8,7 @@ class Token:
             data = json.load(f)
         
         token = data["client"]["token"]
-        return token;
+        return token
 
 class Icons:
     class Dev:
@@ -21,3 +22,33 @@ class Icons:
     
     class Server:
         white_frog = "<:whitefrog:1428126583276961853>"
+
+import time
+import threading
+
+class UpTime:
+	days = 0
+	hours = 0
+	minutes = 0
+	seconds = 0
+	uptime = ""
+
+	@staticmethod
+	def getUpTime():
+		return UpTime.uptime
+
+	@staticmethod
+	def startCounting():
+		while True:
+			time.sleep(1)
+			UpTime.seconds += 1
+			if UpTime.seconds == 60:
+				UpTime.seconds = 0
+				UpTime.minutes += 1
+				if UpTime.minutes == 60:
+					UpTime.minutes = 0
+					UpTime.hours += 1
+					if UpTime.hours == 24:
+						UpTime.hours = 0
+						UpTime.days += 1
+			UpTime.uptime = f"`{UpTime.days}`d `{UpTime.hours}`h `{UpTime.minutes}`m `{UpTime.seconds}`s"

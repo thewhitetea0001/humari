@@ -1,12 +1,17 @@
 import warnings
 import disnake
 import sys, os
+import asyncio
+import thread
 from disnake.ext import commands
+from utilities.bot import UpTime
 from utilities.bot import Token
 from utilities.log import Log
 
 filename = os.path.basename(__file__)
 warnings.filterwarnings("ignore")
+
+thread.Thread(target=UpTime.startCounting, daemon=True).start()
 
 # Intents
 intents = disnake.Intents.default()

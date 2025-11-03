@@ -20,7 +20,7 @@ class OnSlashCommandError(commands.Cog):
 			await inter.response.send_message(f"Пожалуйста, подождите {error.retry_after:.1f} сек. ({int(error.retry_after/60)} мин.)", ephemeral=True)
 			Log.warn("scmd", inter.data.name, f"({inter.author}) The user has exceeded command usage limit")
 		else:
-			Log.error(f"({inter.author}) {error}")
+			Log.error("scmd", inter.data.name, f"({inter.author}) {error}")
 
 def setup(client):
 	client.add_cog(OnSlashCommandError(client))
