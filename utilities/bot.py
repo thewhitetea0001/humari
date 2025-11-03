@@ -15,7 +15,7 @@ class Icons:
         disnake_logo = "<:disnakelogo:1434167456896913408>"
         
         # Boats
-        red_boat = "<:redboat:1434273504643125380>"
+        boat_red = "<:redboat:1434273504643125380>"
         boat_yellow = "<:yellowboat:1434273501975416983>"
         boat_green = "<:greenboat:1434273503154143292>"
     

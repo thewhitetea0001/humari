@@ -16,7 +16,7 @@ class Work(commands.Cog):
         inter: disnake.ApplicationCommandInteraction
     ):
         try:
-            Log.info(f"User {inter.author.name} has used the '/work' command")
+            Log.info("scmd", "work", f"({inter.author.name}) User used the command")
 
             icome_count = random.randint(1, 5)
 
@@ -41,9 +41,10 @@ class Work(commands.Cog):
             if user: # find user by user_id
                 user.money += icome_count
                 session.commit()
+                Log.info("srcmd", "work", f"({inter.author}) Successfully added {icome_count} money")
                 await inter.response.send_message(f"Вы заработали {icome_count} монетки! Теперь у вас **{user.money}** монеток!")
             else:
-                Log.warn(f"work: Uknow user '{inter.author}'")
+                Log.warn("scmd", "work", f"Uknow user '{inter.author}'")
                 new_user = User(
                     name=str(inter.author),
                     user_id=int(inter.author.id),
@@ -51,19 +52,11 @@ class Work(commands.Cog):
                 )
                 session.add(new_user)
                 session.commit()
-                Log.info(f"work: Successull added new user '{inter.author}' ({inter.author.id}) to the economy table")
+                Log.info("scmd", "work", f"Successfully added new user '{inter.author}' ({inter.author.id}) to the economy table")
                 await inter.response.send_message("Вы впервые заработали 2 монетки!")
         except Exception as e:
             await inter.response.send_message(f"Ошибка при выполнении команды:\n```sh\n{e}\n```", ephemeral=True)
-            Log.error(f"({inter.author.name}) work", e)
-
-    @commands.Cog.listener()
-    async def on_slash_command_error(self, inter: disnake.ApplicationCommandInteraction, error):
-        if isinstance(error, commands.CommandOnCooldown):
-            await inter.response.send_message(f"Пожалуйста, подождите {error.retry_after:.1f} сек. ({int(error.retry_after/60)} мин.)", ephemeral=True)
-            Log.warn(f"({inter.author}) work: The user has exceeded command usage limit")
-        else:
-            Log.error(f"({inter.author}) work", error)
+            Log.error("scmd", "work", f"({inter.author.name}) e")
 
 def setup(client):
     client.add_cog(Work(client))

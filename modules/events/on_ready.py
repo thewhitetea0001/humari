@@ -8,7 +8,7 @@ class OnReady(commands.Cog):
 
 	@commands.Cog.listener()
 	async def on_ready(self):
-		Log.info(f"Client logged as: {self.client.user}")
+		Log.info("scmd", "on_ready", f"Client logged as: {self.client.user}")
 
 def setup(client):
 	client.add_cog(OnReady(client))

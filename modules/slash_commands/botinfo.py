@@ -13,7 +13,7 @@ class BotInfo(commands.Cog):
         self, 
         inter: disnake.ApplicationCommandInteraction
     ):
-        Log.info(f"User {inter.author.name} has used the '/botinfo' command")
+        Log.info("scmd", "botinfo", f"User {inter.author.name} used the command")
 
         embed = disnake.Embed(
             title=f"{Icons.Server.white_frog} | Информация о боте",
@@ -30,7 +30,7 @@ class BotInfo(commands.Cog):
         )
 
         await inter.response.send_message(embed=embed)
-        Log.info(f"'botinfo' embed was sended for user {inter.author.name}")
+        Log.info("scmd", "botinfo", f"Embed was sended for user {inter.author.name}")
     
 def setup(client):
     client.add_cog(BotInfo(client))

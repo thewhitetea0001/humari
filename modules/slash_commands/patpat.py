@@ -24,7 +24,7 @@ class PatPat(commands.Cog):
             else:
                 text = f"Вы погладили <@{user.id}>!"
 
-            Log.info(f"User {inter.author.name} has used the '/patpat {user}' command")
+            Log.info("scmd", "patpat", f"User {inter.author.name} -> {user}")
 
             response = requests.get(user.display_avatar.url)
             avatar = BytesIO(response.content)
@@ -36,19 +36,10 @@ class PatPat(commands.Cog):
                 file=disnake.File("assets/petpet_avatar.gif"
             ))
             
-            Log.info(f"User {inter.author} petted {user}")
+            Log.info("scmd", "patpat", f"Message was successfully sent")
         except Exception as e:
             await inter.response.send_message(f"Ошибка при выполнении команды:\n```sh\n{e}\n```", ephemeral=True)
-            Log.error(f"({inter.author.name}) patpat", e)
-
-    @commands.Cog.listener()
-    async def on_slash_command_error(self, inter: disnake.ApplicationCommandInteraction, error):
-        user = getattr(error, "argument", "неизвестный")
-        if isinstance(error, commands.MemberNotFound):
-            Log.warn(f"({inter.author.name}) patpat {user}: Could not found user with ID '{user}'")
-            await inter.response.send_message(f"Не удалось найти пользователя с ID `{user}`", ephemeral=True)
-        else:
-            Log.error(f"({inter.author}) patpat {user}", error)
+            Log.error("scmd", "patpat", f"({inter.author.name}) {e}")
 
 def setup(client):
     client.add_cog(PatPat(client))

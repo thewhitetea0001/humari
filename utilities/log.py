@@ -7,19 +7,21 @@ init()
 
 class Log:
     @staticmethod
-    def info(text):
+    def log(file_name, text):
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        print(f"{timestamp} {Fore.GREEN}info{Style.RESET_ALL} | {text}")
+        print(f"{timestamp} LOG   | [{file_name}] {text}")
 
     @staticmethod
-    def warn(text):
+    def info(task, name, text):
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        print(f"{timestamp} {Fore.YELLOW}warn{Style.RESET_ALL} | {text}")
+        print(f"{timestamp} {Fore.GREEN}INFO{Style.RESET_ALL}  | [{task.upper()}:{name}] {text}") # command or event, name, text
+
+    @staticmethod
+    def warn(task, name, text):
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        print(f"{timestamp} {Fore.YELLOW}WARN{Style.RESET_ALL}  | [{task.upper()}:{name}] {text}")
     
     @staticmethod
-    def error(text, e = None):
-        if e != None:
-            text = f"{text}: {e}"
-
+    def error(task, name, text):
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        print(f"{timestamp} {Fore.RED}erro{Style.RESET_ALL} | {text}")
+        print(f"{timestamp} {Fore.RED}ERROR{Style.RESET_ALL} | [{task.upper()}:{name}] {text}")

@@ -1,10 +1,17 @@
-# folders
+# Byte-compiled / cache
 __pycache__/
-databases/
+*.pyc
 
-# files
+# Databases and archives
+databases/
 humari.zip
+
+# Configs
 config.json
 discloud.config
+
+# Dependencies
 requirements.txt
+
+# Assets
 assets/petpet_avatar.gif
