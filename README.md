@@ -6,7 +6,7 @@ Important *missing* files:
 ```json
 {
 	"client": {
-		"token": "ur bot token"
+		"token": "token"
 	}
 }
 ```

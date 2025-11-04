@@ -33,7 +33,7 @@ class Work(commands.Cog):
 
 			income = random.randint(1, 4)
 			user = session.query(self.User).filter_by(
-				guild_id=inter.guild.id,  # Changed here
+				guild_id=inter.guild.id,
 				user_id=inter.author.id
 			).first()
 
@@ -44,7 +44,7 @@ class Work(commands.Cog):
 				await inter.response.send_message(f"Вы заработали {income} монеты! Теперь у вас **{user.money}** монет.")
 			else:
 				new_user = self.User(
-					guild_id=inter.guild.id,  # Changed here
+					guild_id=inter.guild.id,
 					user_name=str(inter.author),
 					user_id=inter.author.id,
 					money=income

@@ -9,7 +9,7 @@ from utilities.bot import Token
 from utilities.log import Log
 
 filename = os.path.basename(__file__)
-warnings.filterwarnings("ignore")
+warnings.filterwarnings("ignore") # ignore packages warning (pkg_resources from)
 
 thread.Thread(target=UpTime.startCounting, daemon=True).start()
 
@@ -28,6 +28,8 @@ client.load_extension("modules.events.on_ready")
 Log.log(filename, "Loaded cog: modules.events.on_ready")
 client.load_extension("modules.events.on_member_join")
 Log.log(filename, "Loaded cog: modules.events.on_member_join")
+client.load_extension("modules.events.on_voice_state_update")
+Log.log(filename, "Load cog: modules.events.on_voice_state_update")
 
 # Cogs / slash commands
 client.load_extension("modules.slash_commands.botinfo")
