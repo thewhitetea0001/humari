@@ -29,7 +29,7 @@ class BotInfo(commands.Cog):
                 f"{Icons.Dev.boat_green} Аптайм: {UpTime.getUpTime()}\n"
                 f"{Icons.Dev.boat_green} RAM использовано: `{ram_used}` MB"
             ),
-            color=0xcccccc
+            color=0x91918f
         )
 
         embed.set_footer(
